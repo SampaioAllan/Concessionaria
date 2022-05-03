@@ -8,5 +8,55 @@ namespace Concessionaria
         public int Quilometragem { get; set; }
         public string Cor { get; set; }
         public double Valor { get; set; }
+        public void SetMarca(string marca)
+        {
+            Marca=marca;
+        }
+        public string GetMarca()
+        {
+            return Marca;
+        }
+        public void SetModelo(string modelo)
+        {
+            Modelo=modelo;
+        }
+        public string GetModelo()
+        {
+            return Modelo;
+        }
+        public void SetAno(DateTime ano)
+        {
+            Ano=ano;
+        }
+        public DateTime GetAno()
+        {
+            return Ano;
+        }
+        public void SetQuilometragem(int km)
+        {
+            Quilometragem=km;
+        }
+        public int GetQuilometragem()
+        {
+            return Quilometragem;
+        }
+        public void SetCor(string cor)
+        {
+            Cor=cor;
+        }
+        public string GetCor()
+        {
+            return Cor;
+        }
+        public void SetValor(double valor)
+        {
+            Valor=valor;
+        }
+        public double GetValor()
+        {
+            return Valor;
+        }
+
+        //double valor
     }
 }
