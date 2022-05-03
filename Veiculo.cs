@@ -8,6 +8,15 @@ namespace Concessionaria
         public int Quilometragem { get; set; }
         public string Cor { get; set; }
         public double Valor { get; set; }
+        public Veiculo (string marca, string modelo, DateTime ano, int quilometragem, string cor, double valor)
+        {
+            SetMarca(marca);
+            SetModelo(modelo);
+            SetAno(ano);
+            SetQuilometragem(quilometragem);
+            SetCor(cor);
+            SetValor(valor);
+        }
         public void SetMarca(string marca)
         {
             Marca=marca;
