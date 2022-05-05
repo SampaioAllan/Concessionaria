@@ -8,7 +8,7 @@ namespace Concessionaria
         public int Quilometragem { get; set; }
         public string Cor { get; set; }
         public double Valor { get; set; }
-        public Veiculo (string marca, string modelo, DateTime ano, int quilometragem, string cor, double valor)
+        public Veiculo (string marca, string modelo, string ano, int quilometragem, string cor, double valor)
         {
             SetMarca(marca);
             SetModelo(modelo);
@@ -33,9 +33,9 @@ namespace Concessionaria
         {
             return Modelo;
         }
-        public void SetAno(DateTime ano)
+        public void SetAno(string ano)
         {
-            Ano=ano;
+            Ano=DateTime.Parse(ano);
         }
         public DateTime GetAno()
         {
@@ -66,6 +66,9 @@ namespace Concessionaria
             return Valor;
         }
 
-        //double valor
+        public virtual double CalcValor()
+        {
+            return Valor;
+        }
     }
 }
