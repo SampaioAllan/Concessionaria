@@ -11,7 +11,7 @@ namespace Concessionaria
         {
             Cargo=cargo;
         }
-        public string SetCargo()
+        public string GetCargo()
         {
             return Cargo;
         }

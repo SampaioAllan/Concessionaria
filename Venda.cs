@@ -13,7 +13,7 @@ namespace Concessionaria
             SetVendedor(vendedor);
             SetVeiculo(veiculo);
             SetFormaDePagamento(formaDePagamento);
-            SetValorFinal(valorFinal);
+            SetValorFinal(AplicarDesconto());
         }
         public void SetComprador(Cliente comprador)
         {
@@ -55,6 +55,16 @@ namespace Concessionaria
         public double GetValorFinal()
         {
             return ValorFinal;
+        }
+        public double AplicarDesconto()
+        {
+            double valorVeiculo = Veiculo.GetValor();
+            string cargoGerente = "gerente";
+            if(Vendedor.GetCargo().Contains(cargoGerente))
+            {
+                valorVeiculo = valorVeiculo * 0.95;
+            }
+            return valorVeiculo;
         }
 
     }
