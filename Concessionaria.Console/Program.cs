@@ -1,5 +1,4 @@
-﻿
-namespace Concessionaria
+﻿namespace Concessionaria
 {
     public class Program
     {

@@ -5,6 +5,10 @@ namespace Concessionaria
         public string Nome { get; set; }
         public string CPF { get; set; }
         public DateTime DataNasc { get; set; }
+        public Pessoa()
+        {
+            
+        }
         public Pessoa (string nome, string cpf, string dataNasc)
         {
             SetNome(nome);

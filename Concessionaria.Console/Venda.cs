@@ -7,7 +7,7 @@ namespace Concessionaria
         public Veiculo Veiculo { get; set; }
         public string FormaDePagamento { get; set; }
         public double ValorFinal { get; set; }  
-        public Venda(Cliente comprador, Funcionario vendedor, Veiculo veiculo, string formaDePagamento, double valorFinal)
+        public Venda(Cliente comprador, Funcionario vendedor, Veiculo veiculo, string formaDePagamento)
         {
             SetComprador(comprador);
             SetVendedor(vendedor);
@@ -44,7 +44,7 @@ namespace Concessionaria
         {
             FormaDePagamento=formaDePagamento;
         }
-        public string GetFomaDePagamento()
+        public string GetFormaDePagamento()
         {
             return FormaDePagamento;
         }
