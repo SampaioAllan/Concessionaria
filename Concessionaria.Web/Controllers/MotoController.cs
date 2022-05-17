@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Concessionaria;
+using Concessionaria.Web.DTOs;
 
 namespace ProjetoConcessionaria.Web.Controllers
 {
@@ -7,7 +8,7 @@ namespace ProjetoConcessionaria.Web.Controllers
     [Route("[controller]")]
     public class MotoController : ControllerBase
     {
-        public static List<Moto> MotosDaClasse { get; set; } = new List<Moto>();
+        public static List<MotoDTO> MotosDaClasse { get; set; } = new List<MotoDTO>();
 
         [HttpGet("Get MotosDaLista")]
         public IActionResult GetMotosDaLista()
@@ -16,10 +17,19 @@ namespace ProjetoConcessionaria.Web.Controllers
         }
 
         [HttpPost("Set MotoNaLista")]
-        public IActionResult SetMotoNaLista(Moto moto)
+        public IActionResult SetMotoNaLista(MotoDTO motoDTO)
         {
-            MotosDaClasse.Add(moto);
-            return Ok(MotosDaClasse);
+            try
+            {
+                var moto = new Moto(motoDTO.Marca, motoDTO.Modelo, motoDTO.Ano.ToString(), motoDTO.Quilometragem, motoDTO.Cor, motoDTO.Valor, motoDTO.Cilindrada, motoDTO.Partida);
+                MotosDaClasse.Add(motoDTO);
+                return Ok(MotosDaClasse);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         [HttpDelete("Delete MotoDaLista")]

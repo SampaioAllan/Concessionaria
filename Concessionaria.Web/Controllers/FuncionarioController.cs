@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Concessionaria;
+using Concessionaria; 
+using Concessionaria.Web.DTOs;
 
 namespace ProjetoConcessionaria.Web.Controllers
 {
@@ -7,7 +8,7 @@ namespace ProjetoConcessionaria.Web.Controllers
     [Route("[controller]")]
     public class FuncionarioController : ControllerBase
     {
-        public static List<Funcionario> FuncionariosDaClasse { get; set; } = new List<Funcionario>();
+        public static List<FuncionarioDTO> FuncionariosDaClasse { get; set; } = new List<FuncionarioDTO>();
 
         [HttpGet("Get FuncionariosDaLista")]
         public IActionResult GetFuncionariosDaLista()
@@ -16,9 +17,10 @@ namespace ProjetoConcessionaria.Web.Controllers
         }
 
         [HttpPost("Set FuncionarioNaLista")]
-        public IActionResult SetFuncionarioNaLista(Funcionario funcionario)
+        public IActionResult SetFuncionarioNaLista(FuncionarioDTO funcionarioDTO)
         {
-            FuncionariosDaClasse.Add(funcionario);
+            var funcionario = new Funcionario(funcionarioDTO.Nome, funcionarioDTO.CPF, funcionarioDTO.DataNasc.ToString(), funcionarioDTO.Cargo);
+            FuncionariosDaClasse.Add(funcionarioDTO);
             return Ok(FuncionariosDaClasse);
         }
 

@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Concessionaria;
+using Concessionaria.Web.DTOs;
 namespace ProjetoConcessionaria.Web.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class ClienteController : ControllerBase
     {
-        public static List<Cliente> ClientesDaClasse { get; set; } = new List<Cliente>();
+        public static List<ClienteDTO> ClientesDaClasse { get; set; } = new List<ClienteDTO>();
 
         [HttpGet("Get ClientesDaLista")]
         public IActionResult GetClientesDaLista()
@@ -15,13 +16,11 @@ namespace ProjetoConcessionaria.Web.Controllers
         }
 
         [HttpPost("Set ClienteNaLista")]
-        public IActionResult SetClienteNaLista(Cliente cliente)
+        public IActionResult SetClienteNaLista(ClienteDTO clienteDTO)
         {
             try
             {
-                cliente.ValidarTelefone(cliente.GetTelefone());
-                cliente.ValidarEmail(cliente.GetEmail());
-                ClientesDaClasse.Add(cliente);
+                var cliente = new Cliente(clienteDTO.Nome, clienteDTO.CPF, clienteDTO.DataNasc.ToString(), clienteDTO.Email, clienteDTO.Telefone);                ClientesDaClasse.Add(clienteDTO);
                 return Ok(ClientesDaClasse);
             }
             catch (System.Exception ex)

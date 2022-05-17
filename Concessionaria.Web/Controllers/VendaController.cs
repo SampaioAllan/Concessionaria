@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Concessionaria;
+using Concessionaria.Web.DTOs;
 
 namespace ProjetoConcessionaria.Web.Controllers
 {
@@ -7,7 +8,7 @@ namespace ProjetoConcessionaria.Web.Controllers
     [Route("[controller]")]
     public class VendaController : ControllerBase
     {
-        public static List<Venda> VendasDaClasse { get; set; } = new List<Venda>();
+        public static List<VendaDTO> VendasDaClasse { get; set; } = new List<VendaDTO>();
 
         [HttpGet("Get VendasDaLista")]
         public IActionResult GetVendasDaLista()
@@ -16,9 +17,13 @@ namespace ProjetoConcessionaria.Web.Controllers
         }
 
         [HttpPost("Set VendaNaLista")]
-        public IActionResult SetVendaNaLista(Venda venda)
+        public IActionResult SetVendaNaLista(VendaDTO vendaDTO)
         {
-            VendasDaClasse.Add(venda);
+            var compradorTeste = new Cliente(vendaDTO.CompradorDTO.Nome, vendaDTO.CompradorDTO.CPF, vendaDTO.CompradorDTO.DataNasc.ToString(), vendaDTO.CompradorDTO.Email, vendaDTO.CompradorDTO.Telefone);
+            var vendedorTeste = new Funcionario(vendaDTO.VendedorDTO.Nome, vendaDTO.VendedorDTO.CPF, vendaDTO.VendedorDTO.DataNasc.ToString(), vendaDTO.VendedorDTO.Cargo);
+            var veiculoTeste = new Veiculo(vendaDTO.VeiculoDTO.Marca, vendaDTO.VeiculoDTO.Modelo, vendaDTO.VeiculoDTO.Ano.ToString(), vendaDTO.VeiculoDTO.Quilometragem, vendaDTO.VeiculoDTO.Cor, vendaDTO.VeiculoDTO.Valor);
+            var venda = new Venda(compradorTeste, vendedorTeste, veiculoTeste, vendaDTO.FormaDePagamento);
+            VendasDaClasse.Add(vendaDTO);
             return Ok(VendasDaClasse);
         }
 
