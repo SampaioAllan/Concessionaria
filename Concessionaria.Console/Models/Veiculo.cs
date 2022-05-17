@@ -8,7 +8,7 @@ namespace Concessionaria
         private DateTime Ano { get; set; }
         private int Quilometragem { get; set; }
         private string Cor { get; set; }
-        private double Valor { get; set; }
+        protected double Valor { get; set; }
         public Veiculo (string marca, string modelo, string ano, int quilometragem, string cor, double valor)
         {
             SetMarca(marca);
