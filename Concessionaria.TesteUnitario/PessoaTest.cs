@@ -1,3 +1,4 @@
+using Concessionaria.MinhasExceptions;
 using Xunit;
 
 namespace Concessionaria.TesteUnitario
@@ -48,6 +49,16 @@ namespace Concessionaria.TesteUnitario
             //Assert - 
             Assert.Equal(emailEsperado, emailATestar);
         }
+
+        [Fact]
+        public void TestandoSeClienteNaoSalvaEmailIncorreto()
+        {
+            //Arrange - Preparando
+            var emailIncorreto = "email&email.com";
+            //Act e Assert
+            var exceptionTest = Assert.Throws<ValidacaoDeDados>(() => new Cliente("Jonatan", "11122233344", "11/07/1994", emailIncorreto, "999887766"));
+            Assert.Equal("email inválido!", exceptionTest.Message);
+        }
         [Fact]
         public void TestandoSeClienteSalvaTelefoneCorretamente()
         {
@@ -59,8 +70,18 @@ namespace Concessionaria.TesteUnitario
             //Assert - 
             Assert.Equal(telefoneEsperado, telefoneATestar);
         }
+
         [Fact]
-        public void TestandoSeFuncionarioSalvaEmailCorretamente()
+        public void TestandoSeClienteNaoSalvaTelefoneIncorreto()
+        {
+            //Arrange - Preparando
+            var telefoneIncorreto = "12345678";
+            //Act e Assert
+            var exceptionTest = Assert.Throws<ValidacaoDeDados>(() => new Cliente("Jonatan", "11122233344", "11/07/1994", "email@email", telefoneIncorreto));
+            Assert.Equal("Telefone inválido", exceptionTest.Message);
+        }
+        [Fact]
+        public void TestandoSeFuncionarioSalvaCargoCorretamente()
         {
             //Arrange - Preparando
             var cargoEsperado = "gerente";

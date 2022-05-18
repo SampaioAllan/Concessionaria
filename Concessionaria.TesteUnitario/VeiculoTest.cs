@@ -1,3 +1,4 @@
+using Concessionaria.MinhasExceptions;
 using Xunit;
 
 namespace Concessionaria.TesteUnitario;
@@ -69,6 +70,25 @@ public class VeiculoTest
             var valorATestar = veiculoTest.GetValor();
             //Assert - 
             Assert.Equal(valorEsperado, valorATestar);
+    }
+    [Fact]
+    public void TestandoSeCarroNaoSalvaValorIncorreto()
+    {
+        //Arrange - Preparando
+        var valorIncorreto = 150;
+        //Act e Assert
+        var exceptionTest = Assert.Throws<ValidacaoDeDados>(() => new Carro("gm", "celta", "01/01/2020", 0, "cinza", valorIncorreto, true, "flex"));
+        Assert.Equal("Valor inválido!", exceptionTest.Message);
+    }
+
+    [Fact]
+    public void TestandoSeMotoNaoSalvaValorIncorreto()
+    {
+        //Arrange - Preparando
+        var valorIncorreto = 0; //vou passar em cilindrada pois é la que calcula valor...
+        //Act e Assert
+        var exceptionTest = Assert.Throws<ValidacaoDeDados>(() => new Moto("honda", "twister", "01/01/2020", 0, "azul", 10000, valorIncorreto, "injeção eletrônica"));
+        Assert.Equal("Valor inválido!", exceptionTest.Message);
     }
     [Fact]
     public void TestandoSeCarroSalvaTransmissaoCorretamente()
