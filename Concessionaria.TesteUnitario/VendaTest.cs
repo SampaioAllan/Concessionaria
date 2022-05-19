@@ -1,3 +1,4 @@
+using Concessionaria.Lib.Models;
 using Xunit;
 
 namespace Concessionaria.TesteUnitario

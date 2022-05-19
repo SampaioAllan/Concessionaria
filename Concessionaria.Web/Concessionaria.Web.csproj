@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Concessionaria.Console\Concessionaria.csproj" />
+    <ProjectReference Include="..\Concessionaria.Lib\Concessionaria.Lib.csproj" />
   </ItemGroup>
 
 </Project>

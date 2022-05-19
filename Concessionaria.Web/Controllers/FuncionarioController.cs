@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Concessionaria; 
+using Concessionaria.Lib.Models; 
 using Concessionaria.Web.DTOs;
 
 namespace ProjetoConcessionaria.Web.Controllers

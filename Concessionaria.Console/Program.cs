@@ -1,4 +1,5 @@
-﻿namespace Concessionaria
+﻿using Concessionaria.Lib.Models;
+namespace Concessionaria
 {
     public class Program
     {

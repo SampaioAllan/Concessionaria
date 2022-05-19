@@ -1,4 +1,4 @@
-namespace Concessionaria
+namespace Concessionaria.Lib.Models
 {
     public class Pessoa
     {

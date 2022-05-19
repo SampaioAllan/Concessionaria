@@ -1,6 +1,6 @@
-using Concessionaria.MinhasExceptions;
+using Concessionaria.Lib.MinhasExceptions;
 
-namespace Concessionaria
+namespace Concessionaria.Lib.Models
 {
     public class Carro:Veiculo
     {

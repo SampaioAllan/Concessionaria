@@ -1,5 +1,5 @@
-using Concessionaria.MinhasExceptions;
-namespace Concessionaria
+using Concessionaria.Lib.MinhasExceptions;
+namespace Concessionaria.Lib.Models
 {
     public class Cliente : Pessoa
     {

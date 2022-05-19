@@ -1,4 +1,4 @@
-namespace Concessionaria.MinhasExceptions
+namespace Concessionaria.Lib.MinhasExceptions
 {
     public class ValidacaoDeDados : Exception
     {   
